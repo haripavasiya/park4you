@@ -268,9 +268,8 @@ class _Sign_Up_ScreenState extends State<Sign_Up_Screen> {
                   width: AppConstants.itemWidth,
                   margin: EdgeInsets.symmetric(vertical: AppConstants.itemWidth*0.02,horizontal: AppConstants.itemWidth*0.13),
                   padding: EdgeInsets.symmetric(vertical: AppConstants.itemWidth*0.035),
-                  decoration: BoxDecoration(
-                    color: ColorResources.COLOR_PRIMERY,
-                    borderRadius: BorderRadius.circular(AppConstants.itemWidth*0.3),
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(image: AssetImage(Images.bg_button),fit: BoxFit.fill),
                   ),
                   child: Text("Sign Up",textAlign: TextAlign.center,style: montserratRegular.copyWith(color: ColorResources.WHITE,fontSize: AppConstants.itemWidth*0.04)),
                 ),

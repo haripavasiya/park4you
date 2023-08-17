@@ -8,6 +8,7 @@ import '../../../utill/color_resources.dart';
 import '../../../utill/images.dart';
 import '../../../utill/styles.dart';
 import '../../baseview/app_bar.dart';
+import '../details/parking_details_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
     parkingList.add(ParkingModel("https://media.cnn.com/api/v1/images/stellar/prod/230518162326-01-us-parking-spots-restricted.jpg?c=original", "Enae Parking", "Enae Parking", "1.50", "40", "5.0"));
     parkingList.add(ParkingModel("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Tel_Aviv_parking_lot.jpg/800px-Tel_Aviv_parking_lot.jpg", "Jawan Parking", "Jawan Parking", "3.50", "22", "2.0"));
     parkingList.add(ParkingModel("https://upload.wikimedia.org/wikipedia/commons/b/ba/Car_park_-8.jpg", "Chaleya Parking", "Chaleya Parking", "4.50", "55", "2.0"));
+    tempParkingList.addAll(parkingList);
   }
 
   @override
@@ -119,83 +121,86 @@ class _SearchScreenState extends State<SearchScreen> {
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                    color: ColorResources.WHITE,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: ColorResources.BLACK.withOpacity(0.5),
-                          blurRadius: 1
-                      )
-                    ]
-                ),
-                margin: EdgeInsets.symmetric(vertical: AppConstants.itemWidth*0.02),
-                child: Row(
-                  children: [
-                    ClipRRect(
+              return GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ParkingDetailsScreen(parkingList[index]),)),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: ColorResources.WHITE,
                       borderRadius: BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        height: AppConstants.itemHeight*0.1,
-                        imageUrl:parkingList[index].imageUrl,
-                        errorWidget: (context, url, error) => Image.asset(Images.placeholderImages,height: AppConstants.itemHeight*0.1,width: AppConstants.itemHeight*0.15,),
-                        progressIndicatorBuilder: (context, url, downloadProgress) => const Center(child: CircularProgressIndicator(color: ColorResources.COLOR_PRIMERY,),),
-                        fit: BoxFit.cover,
-                        width: AppConstants.itemHeight*0.15,
-                      ),
-                    ),
-                    SizedBox(width: AppConstants.itemWidth*0.02,),
-                    Expanded(child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Text("${parkingList[index].title}",
-                                  style: montserratRegular.copyWith(color:ColorResources.BLACK,
-                                      fontSize: AppConstants.itemWidth*0.04)),
-                            ),
-                            Column(
-                              children: [
-                                Text("\$ ${parkingList[index].price}",
-                                    style: montserratRegular.copyWith(color:ColorResources.COLOR_PRIMERY,
-                                        fontSize: AppConstants.itemWidth*0.035)),
-                                Text("Per Hour",
-                                    style: montserratRegular.copyWith(color:ColorResources.BLACK,
-                                        fontSize: AppConstants.itemWidth*0.03)),
-                              ],
-                            )
-                          ],
+                      boxShadow: [
+                        BoxShadow(
+                            color: ColorResources.BLACK.withOpacity(0.5),
+                            blurRadius: 1
+                        )
+                      ]
+                  ),
+                  margin: EdgeInsets.symmetric(vertical: AppConstants.itemWidth*0.02),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          height: AppConstants.itemHeight*0.1,
+                          imageUrl:parkingList[index].imageUrl,
+                          errorWidget: (context, url, error) => Image.asset(Images.placeholderImages,height: AppConstants.itemHeight*0.1,width: AppConstants.itemHeight*0.15,),
+                          progressIndicatorBuilder: (context, url, downloadProgress) => const Center(child: CircularProgressIndicator(color: ColorResources.COLOR_PRIMERY,),),
+                          fit: BoxFit.cover,
+                          width: AppConstants.itemHeight*0.15,
                         ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on_rounded,color: ColorResources.BLACK.withOpacity(0.7),size: 18,),
-                            SizedBox(width: AppConstants.itemWidth*0.01,),
-                            Expanded(
-                              child: Text("${parkingList[index].description}",
+                      ),
+                      SizedBox(width: AppConstants.itemWidth*0.02,),
+                      Expanded(child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text("${parkingList[index].title}",
+                                    style: montserratRegular.copyWith(color:ColorResources.BLACK,
+                                        fontSize: AppConstants.itemWidth*0.04)),
+                              ),
+                              Column(
+                                children: [
+                                  Text("\$ ${parkingList[index].price}",
+                                      style: montserratRegular.copyWith(color:ColorResources.COLOR_PRIMERY,
+                                          fontSize: AppConstants.itemWidth*0.035)),
+                                  Text("Per Hour",
+                                      style: montserratRegular.copyWith(color:ColorResources.BLACK,
+                                          fontSize: AppConstants.itemWidth*0.03)),
+                                ],
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.location_on_rounded,color: ColorResources.BLACK.withOpacity(0.7),size: 18,),
+                              SizedBox(width: AppConstants.itemWidth*0.01,),
+                              Expanded(
+                                child: Text("${parkingList[index].description}",
+                                    style: montserratLight.copyWith(color:ColorResources.BLACK,
+                                        fontSize: AppConstants.itemWidth*0.03)),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text("${parkingList[index].available_parking} parking available",
+                                    style: montserratLight.copyWith(color:ColorResources.BLACK.withOpacity(0.5),
+                                        fontSize: AppConstants.itemWidth*0.04)),
+                              ),
+                              Text("${parkingList[index].rate}",
                                   style: montserratLight.copyWith(color:ColorResources.BLACK,
                                       fontSize: AppConstants.itemWidth*0.03)),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text("${parkingList[index].available_parking} parking available",
-                                  style: montserratLight.copyWith(color:ColorResources.BLACK.withOpacity(0.5),
-                                      fontSize: AppConstants.itemWidth*0.04)),
-                            ),
-                            Text("${parkingList[index].rate}",
-                                style: montserratLight.copyWith(color:ColorResources.BLACK,
-                                    fontSize: AppConstants.itemWidth*0.03)),
-                            Icon(Icons.star,color: ColorResources.YELLOW.withOpacity(0.7),size: 18,),
-                          ],
-                        )
-                      ],
-                    )),
-                    SizedBox(width: AppConstants.itemWidth*0.02,),
-                  ],
+                              Icon(Icons.star,color: ColorResources.YELLOW.withOpacity(0.7),size: 18,),
+                            ],
+                          )
+                        ],
+                      )),
+                      SizedBox(width: AppConstants.itemWidth*0.02,),
+                    ],
+                  ),
                 ),
               );
             },),)

@@ -100,9 +100,8 @@ class _IntroScreenState extends State<IntroScreen> {
                 }
               },
               child: Container(
-                decoration: BoxDecoration(
-                  color: ColorResources.COLOR_PRIMERY,
-                  borderRadius: BorderRadius.circular(AppConstants.itemWidth*0.05),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(image: AssetImage(Images.bg_button),fit: BoxFit.fill),
                 ),
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(vertical:AppConstants.itemWidth*0.04),
