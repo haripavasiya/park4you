@@ -1,0 +1,34 @@
+class Images {
+  static const String placeholderImages = 'assets/image/placeholder.jpg';
+  static const String noInternet = 'assets/image/opps_internet.png';
+  static const String noData = 'assets/image/no_data.png';
+  static const String logo = 'assets/image/logo.png';
+  static const String logoHorizontal = 'assets/image/logo_horizontal.png';
+  static const String onBoard_1 = 'assets/image/onBoard_1.png';
+  static const String onBoard_2 = 'assets/image/onBoard_2.png';
+  static const String onBoard_3 = 'assets/image/onBoard_3.png';
+  static const String ic_home = 'assets/image/ic_home.png';
+  static const String ic_heart = 'assets/image/ic_heart.png';
+  static const String ic_location = 'assets/image/ic_location.png';
+  static const String ic_user = 'assets/image/ic_user.png';
+  static const String ic_chart = 'assets/image/ic_chart.png';
+  static const String icMenu = 'assets/image/ic_menu.png';
+  static const String ic_parking = 'assets/image/ic_parking.png';
+  static const String ic_bus = 'assets/image/ic_bus.png';
+  static const String ic_fast_delivery = 'assets/image/ic_fast_delivery.png';
+  static const String ic_bicycle = 'assets/image/ic_bicycle.png';
+  static const String ic_motorbike = 'assets/image/ic_motorbike.png';
+  static const String ic_car = 'assets/image/ic_car.png';
+  static const String auth_bg = 'assets/image/auth_bg.jpg';
+  static const String welcome_icon = 'assets/image/welcome_icon.png';
+  static const String IC_PHONE = 'assets/image/ic_phone.png';
+  static const String IC_MAIL = 'assets/image/ic_mail.png';
+  static const String IC_USER = 'assets/image/ic_user.png';
+  static const String icNotification = 'assets/image/ic_notification.png';
+  static const String ic_search = 'assets/image/ic_search.png';
+  static const String details_map = 'assets/image/details_map.png';
+  static const String ic_qrcode = 'assets/image/ic_qrcode.png';
+  static const String bg_button = 'assets/image/bg_button.png';
+  static const String ic_favorite = 'assets/image/ic_favorite.png';
+  static const String ic_park_car = 'assets/image/ic_park_car.png';
+}
