@@ -21,8 +21,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(child: TitleView('Notification'), preferredSize: const Size.fromHeight(55)),
-      backgroundColor: ColorResources.WHITE,
+
       body: ListView.builder(
         padding: const EdgeInsets.all(10),
         physics: const ClampingScrollPhysics(),
